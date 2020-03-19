@@ -1,110 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Crash's Site</title>
-		<link rel="icon" href="https://crashoveride95.github.io/favicon.ico" type="image/x-icon">
-		<link rel="shortcut icon" href="https://crashoveride95.github.io/favicon.ico" type="image/x-icon">
-		<style type="text/css">
-			@import 'https://fonts.googleapis.com/css?family=Quicksand|Lobster';
 
-			html {
-				background-color: #fefefe
-			}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>jrra's zone</title>
+<style type="text/css">
 
-			* {
-				margin: 0
-			}
+@font-face {
+	font-family: 'FatFrank Heavy';
+	src: url('FatFrank-Heavy.eot'); /* IE9 compat */
+	src:	url('FatFrank-Heavy.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		url('FatFrank-Heavy.woff') format('woff'),	/* good browsers */
+		url('FatFrank-Heavy.ttf') format('truetype');	/* safari, android, ios */
+	font-style: normal;
+	font-weight: 400;
+}
 
-			*,a,body {
-				padding: 0;
-				border: 0;
-				font: inherit;
-				vertical-align: baseline
-			}
+@font-face {
+	font-family: 'Lora';
+	src: url('Lora-Regular.ttf'), url('Lora-Bold.ttf'), url('Lora-Italic.ttf'), url('Lora-BoldItalic.ttf');
+	font-style: normal;
+	font-weight: 400;
+}
 
-			body {
-				line-height: 1;
-				font-family: 'Quicksand',"Helvetica Neue",Helvetica,Arial,sans-serif;
-				font-size: 18px;
-				font-weight: 400;
-				color: #353535;
-				margin: 0 auto;
-				width: 600px
-			}
+h1,h2,h3 {
+	font-family: Helvetica, Sans-Serif;
+}
 
-			a {
-				margin: 0 0 0 1px;
-				text-decoration: none
-			}
+.header {
+	border-bottom: 0.25em solid #ff4081;
+	text-decoration:none;
+	display:inline;
+}
+.header h1 {
+	font-family: 'FatFrank Heavy';
+	font-size: 43px;
+	font-weight: normal;
+	color:#3f51b5;
+	display:inline;
+	text-shadow: 2px 2px 0 white, -2px 2px 0 white;
+}
 
-			a,a:visited {
-				color: #369
-			}
+a {
+	font-weight: bold;
+}
 
-			a:hover {
-				color: silver
-			}
+.alert {
+	color: red;
+	font-weight: bold;
+	font-size: +1em;
+}
 
-			section#title {
-				margin-bottom: 60px;
-				margin-top: 50px
-			}
+@media (min-width: 1000px) {
+body {
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+}
 
-			section h2,section#title h1 {
-				font-family: 'Lobster',Arial,sans-serif
-			}
+body {
+	font-family: sans-serif;
+}
 
-			section#title h1 {
-				margin: 0 0 9px;
-				text-align: center;
-				font-size: 2em
-			}
+dd {
+	padding-bottom: 1em;
+}
+</style>
+</head>
+<body>
 
-			section.post {
-				border-left: 1px solid #000;
-				margin: 0 0 60px;
-				padding: 0 0 0 10px
-			}
+<div class='header'><h1>jrra's zone</h1></div>
 
-			section.post div.info {
-				line-height: 1.15;
-				margin: 8px 0 0
-			}
+<h2>Welcome to jrra's zone</h2>
 
-			section h2 {
-				font-size: 1.3em
-			}
+<p>
+I am an IRC enthusiast who plays a lot of video games.</p>
 
-			div.subtitle {
-				font-size: .7em;
-				margin: 0 0 0 2px
-			}
+<h3>What's here</h3>
+<dl>
+	<dt><a href="/n64">N64 Games And Hardware You Didn't Know About</a></dt>
+	<dd>- my list of N64 curiosities, with a lot of pictures</dd>
+	<dt><a href="/sgi">SGI/IRIX CDs</a></dt>
+	<dd>- a bunch of old SGI- and IRIX-related CDs. I went kind of nuts collecting these.</dd>
+</dl>
 
-			div#links {
-				font-size: 14px
-			}
-		</style>
-	</head>
-	<body>
-		<section id="title">
-			<h1>Crash's Stuff</h1>
-		</section>
-		<section class="post">
-			<h2>Tutorials</h2>
-			<div class="info">
-				• <a href="https://crashoveride95.github.io/files/Creating%20a%20Workflow%20for%20RSP%20Microcode%20in%20Linux.doc">RSP ucode Installation Tutorial</a><br/>
-			</div>
-		</section>
-		<section class="post">
-			<h2>Other Stuff</h2>
-			<div class="subtitle">Hacks, other projects</div>
-			<div class="info">
-				• <a href="https://mega.nz/#!oT4hlS7A!OS_8zDMezzjXoQiil9SJd1D8kAFbEkYqJKdsj2B8hkk">N64 SDK Easy Install</a><br/>
-			</div>
-		</section>
-		<div id="links">
-			<a href="https://github.com/CrashOveride95">GitHub</a> — <a href="https://twitter.com/crashoveride953">Twitter</a>
-		</div>
-	</body>
+<h3>Game hacking stuff</h3>
+<dl>
+	<dt>N64</dt>
+	<dd>- <a href="/pokemon-stadium-2">Pokemon Stadium 2</a></dd>
+</dl>
+</body>
 </html>
