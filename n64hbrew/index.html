@@ -1,0 +1,98 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1" />-->
+<meta name="theme-color" content="#3f51b5" />
+<title>N64 Homebrew Hell</title>
+<style type="text/css">
+@font-face {font-family: source-sans-pro-light; src: url("SourceSansPro-Light.ttf.woff"); font-style:normal;}
+@font-face {font-family: source-sans-pro; src: url("SourceSansPro-Regular.ttf.woff"); font-weight: normal; font-style:normal;}
+
+body {font-family: source-sans-pro;}
+#parent {margin:auto;}
+@media (min-width: 1000px) {
+#parent {max-width:800px;}
+}
+h1 {font-family: source-sans-pro-light; background-color:#3f51b5; padding:0.3em;color:white;}
+h2 {font-family: source-sans-pro-light; /*background-color:#c5cae9; padding:0 0.3em;color:black; width:50%;*/}
+h3 {font-family: source-sans-pro-light;}
+a  {color: #ff4081;}
+a:visited {color: #ff80ab;}
+/* a img { border-bottom:0.3em solid #ff4081;} */
+p {padding: 0px 20px 0px 20px;}
+table {padding: 0px 20px 0px 20px;}
+th {text-align:left;}
+td {/*border:1px solid #ddd;padding:0.5rem;*/}
+.columnbreak {-webkit-column-break-before: always;break-before:column;}
+pre {/*font-family:source-code-pro;*/padding: 0px 40px 0px 40px;background-color:#eee;background-clip:content-box;}
+
+/*table {max-width:100%;border-collapse:collapse;border-spacing:0;border-color:gray;}
+tbody {display: table-row-group;vertical-align:middle; border-color:inherit;}*/
+td {border-top:1px solid #ddd;padding:0 .5em;}
+
+#index-table-elements {
+/*  -moz-column-count:3;
+-webkit-column-count:3;*/
+}
+
+</style>
+</head>
+<body>
+<div id="parent">
+<h1 id="n64-homebrew-hell">N64 Homebrew Hell</h1>
+
+
+<div id="index-table">
+<hr />
+<div id="index-table-elements">
+<h2>SDK Pages</h2>
+<a href="#seckmc">Partner-N64 SDK</a><br />
+<a href="#n64-mouse">SN64</a><br />
+<a href="#n64-keyboard">CodeWarrior</a><br />
+<a href="#sec64dd-modem">iQue SDK</a><br />
+<hr />
+</div>
+
+<h1 id="seckmc">Partner-N64 SDK</h1>
+<p><a href="kmc.html"><img src="i/l/kmccring.png" alt="" /></a></p>
+<p>The 64DD is a disk drive attachment. The drive connects to the expansion port on the bottom of the N64.</p>
+<p>When the drive is attached, the N64 will check on powerup if a game cartridge is in the top slot. If there is, then the game is started as usual. Otherwise, the N64 boots from a 4mbyte IPL ROM inside the 64DD. This contains a menu program that shows the N64 logo on-screen and allows the onboard clock to be set. If a disk is inserted at any time, the program will load a program from the disk and run it.</p>
+<p>There are a number of accessories that are specific to this device, some of which are covered below.</p>
+
+
+<h1 id="n64-mouse">N64 Mouse</h1>
+<p><a href="i/n64-mouse1.jpg"><img src="i/l/n64-mouse1.jpg" alt="" /></a></p>
+<p><a href="i/n64-mouse2.jpg"><img src="i/m/n64-mouse2.jpg" alt="" /></a> <a href="i/n64-mouse3.jpg"><img src="i/m/n64-mouse3.jpg" alt="" /></a></p>
+<p>This a standard 2-button ball mouse. A few 64DD games support it:</p>
+<ul>
+<li>Mario Artist: Paint Studio</li>
+<li>Mario Artist: Talent Studio</li>
+<li>Mario Artist: Polygon Studio</li>
+<li>Mario Artist: Communication Kit</li>
+</ul>
+<p>Most other N64 games see the mouse as a controller, and a few of them are playable like this. Mouse movements register as analog stick movements. The left button maps to the A button, and the right mouse button maps to B.</p>
+<p>There is a single microcontroller that handles everything.</p>
+<p>This mouse appears to be based on contemporary Mitsumi PS/2 mice, which have nearly identical guts.</p>
+
+
+<h1 id="n64-keyboard">N64 Keyboard</h1>
+<p>There is an N64 keyboard. It seems to be used exclusively by one game, the Randnet Disk, which is a web browser and email client.</p>
+
+
+<h1 id="sec64dd-modem">64DD Modem</h1>
+<p><a href="i/pRuOspy.jpg"><img src="i/l/pRuOspy.jpg" alt="" /></a></p>
+<p><a href="i/Gnv8C8w.jpg"><img src="i/m/Gnv8C8w.jpg" alt="" /></a>
+<a href="i/sKYDgdI.jpg"><img src="i/m/sKYDgdI.jpg" alt="" /></a></p>
+<p>The 64DD came with a modem cart. It fits into the cart slot, right where a game would go. There is a green light on the front to show when the modem is active.</p><p>Inside the modem is an ASIC and a ROM. The ROM had to be dumped the &quot;hard way&quot;, by removing the ROM chip from the board and connecting it to a reader. The ROM is 32mbits and has a base address of 0x18000000, with a mirror at 0x18400000. It begins with a standard 64-byte cart header, followed by three ELF files at 0x40, 0x10000, and 0x20000. Each ELF appears to implement a softmodem. It is not clear why there are three different versions.</p>
+<p>The Randnet Disk doesn't recognize the modem if its ROM is physically removed from the board.</p>
+<p>Both the Randnet Disk and the Communication Kit dial a built-in phone number that cannot be changed: 03-3568-5050. This number is no longer in service.</p>
+<p>Trivia: this is one of the few N64 accessories that uses triwing screws.</p>
+
+<h1>The End</h1>
+<p>&copy;2016 jrra</p>
+</div>
+</body>
+</html>
