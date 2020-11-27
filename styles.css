@@ -1,9 +1,6 @@
 @font-face {
-	font-family: 'FatFrank Heavy';
-	src: url('FatFrank-Heavy.eot'); /* IE9 compat */
-	src:	url('FatFrank-Heavy.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		url('FatFrank-Heavy.woff') format('woff'),	/* good browsers */
-		url('FatFrank-Heavy.ttf') format('truetype');	/* safari, android, ios */
+	font-family: 'OPTIHandelGothic-Light';
+	src: url(OPTIHandelGothic-Light.otf);
 	font-style: normal;
 	font-weight: 400;
 }
@@ -29,7 +26,7 @@ h1 {font-family: Helvetica, Sans-serif;}
 	display:inline;
 }
 .header h1 {
-	font-family: 'FatFrank Heavy';
+	font-family: 'OPTIHandelGothic-Light';
 	font-size: 43px;
 	font-weight: normal;
 	color:#3f51b5;
