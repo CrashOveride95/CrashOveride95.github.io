@@ -1,9 +1,8 @@
-@font-face {
-	font-family: 'OPTIHandelGothic-Light';
-	src: url(OPTIHandelGothic-Light.otf);
-	font-style: normal;
-	font-weight: 400;
-}
+/* ------------------------------------ */
+/* ------------------------------------ */
+/* ------------------------------------ */
+/* ------------------------------------ */
+/* ------------------------------------ */
 body {
 	font-family: sans-serif;
 }
@@ -16,15 +15,15 @@ body {
 }
 h1 {font-family: Helvetica, Sans-serif;}
 .header {
-	border-bottom: 0.25em solid #ff4081;
+	border-bottom: 0.25em solid #407cff;
 	text-decoration:none;
 	display:inline;
 }
 .header h1 {
-	font-family: 'OPTIHandelGothic-Light';
+	font-family: 'Tahoma';
 	font-size: 43px;
 	font-weight: normal;
-	color:#3f51b5;
+	color:#b700ff;
 	display:inline;
 	text-shadow: 2px 2px 0 white, -2px 2px 0 white;
 }
@@ -33,9 +32,6 @@ h1 {font-family: Helvetica, Sans-serif;}
 }
 code {background-color: #eee;}
 pre {background-color: #eee; overflow-x: auto;}
-pre .kw {color:green;}
-pre .c {color:blue;}
-pre .s {color:fuchsia;}
 section {clear:both;overflow: auto;}
 h3,h4 {background:#eee;}
 .download {color:white;background-color:green;}
