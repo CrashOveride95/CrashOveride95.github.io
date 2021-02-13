@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles.css" type="text/css" media="all" />
+<title>Modern SDK: Introduction</title>
+
+<div class='header'><h1>Modern SDK: Introduction</h1></div>
+<h3></h3>
+<img src="img/chrome.png" alt="Chrome demo" width="420" height="360" />
+
+<p>
+N64 development has suffered for years due to extremely old devkits. 
+Both options used in homebrew are 20+ years old, and have dated compilers with only C89 support.
+Using such antique tools was deemed unacceptable by myself.
+</p>
+
+<p>
+Unfortunately, there is no standard setup for using a current toolset or OS with the SDK library.
+Earlier attempts 
+(such as <a href="https://github.com/trhodeos/modern-n64sdk">trhodeos's "modern-n64sdk"</a>) 
+were very complicated, with annoying paths and strange toolchain setups.
+</p>
+
+<p>
+So I decided to fix this situation, and make a devkit that would work on a modern Debian-based distro (as it's the only Linux I've ever messed with).
+
+</p>
+
+<p>
+My goals are: <br>
+    - Have a modern toolchain using latest GCC. <br>
+    - Support most of the sample programs. <br>
+    - Port over or provide replacements for specific tools like rspasm or rgb2c. <br>
+    - Have documentation showing how to use specific features, such as linkerscripts. <br>
+</p>
+
+<a href="main.html">Back home</a>

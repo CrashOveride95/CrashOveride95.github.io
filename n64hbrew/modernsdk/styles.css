@@ -1,0 +1,40 @@
+/* ------------------------------------ */
+/* ------------------------------------ */
+/* ------------------------------------ */
+/* ------------------------------------ */
+/* ------------------------------------ */
+body {
+	font-family: sans-serif;
+}
+@media (min-width: 1200px) {
+body {
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+}
+h1 {font-family: Helvetica, Sans-serif;}
+.header {
+	border-bottom: 0.25em solid #ff7300;
+	text-decoration:none;
+	display:inline;
+}
+.header h1 {
+	font-family: 'Tahoma';
+	font-size: 43px;
+	font-weight: normal;
+	color:#00aeff;
+	display:inline;
+	text-shadow: 2px 2px 0 white, -2px 2px 0 white;
+}
+.header a{
+	text-decoration:none;
+}
+code {background-color: #eee;}
+pre {background-color: #eee; overflow-x: auto;}
+section {clear:both;overflow: auto;}
+h3,h4 {background:#eee;}
+video,img {float:right;max-width:100%;}
+.download {color:white;background-color:green;}
+dd {padding-bottom:1em;}
+.time {font-style:italic;color:#aaa;}
