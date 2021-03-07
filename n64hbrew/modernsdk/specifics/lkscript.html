@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../styles.css" type="text/css" media="all" />
+<title>Modern SDK: Linkerscripts</title>
+
+<div class='header'><h1>Modern SDK: Linkerscripts</h1></div>
+</head>
+<body>
+<h3>Preface</h3>
+
+<p>
+    "Linking" involves putting the different data (code, assets) that goes into your program together into a ROM. <br>
+    In the original N64 devkit from Nintendo, this was the job of <code>makerom</code>. <br>
+    <code>makerom</code> used <code>spec</code> files as configuration for how to link the ROM together. <br>
+    These specfiles had an original syntax, an example of which is below. <br>
+<pre>
+#include "onetri.h"
+/*
+ * ROM spec file
+ */
+beginseg
+    name "code"
+    flags BOOT OBJECT
+    entry boot
+    stack bootStack + STACKSIZE
+    include "codesegment.o"
+    include "$(ROOT)/usr/lib/PR/rspboot.o"
+    include "$(ROOT)/usr/lib/PR/gspF3DEX2.xbus.o"
+    include "$(ROOT)/usr/lib/PR/gspF3DEX2.fifo.o"
+endseg
+</pre>
+</p>
+
+<p>
+    This example is taken from the <code>onetri</code> demo.
+    The <code>spec</code> file would be converted to a script for use with <code>ld</code>. <br>
+    <code>ld</code> would 
+</p>
+
+<a href="index.html">Back home</a>
+</body>
+</html>
