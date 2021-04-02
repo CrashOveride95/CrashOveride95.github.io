@@ -35,22 +35,32 @@
     
     <code>chmod +x build-posix64-toolchain.sh</code><br>
     <br>
-    It is normal to be prompted for your password, as the compiler installs to <code>/usr/local</code>.
+    It is normal to be prompted for your password, as the compiler installs to <code>/opt/crashsdk</code>.
     <br>
     This will download and build <em>GCC</em> and the <em>Binutils</em> line of programs. This may take a while.<br>
     
-    When it finishes, make sure <code>/usr/local/bin</code> is in your <strong>PATH</strong>. It should already be there by default.<br>
+    When it finishes, make sure <code>/opt/crashsdk/bin</code> is in your <strong>PATH</strong>. It should already be there by default.<br>
 </p>
 
 <p>
     Next, add a definition of <code>N64_LIBGCCDIR</code> to your .bashrc. This is because <code>ld</code> does not search for libraries in that directory by default, so it cannot find <code>libgcc</code>. <br>
     
-    As the compiler installs to <code>/usr/local</code> I've added<br>
+    As the compiler installs to <code>/opt/crashsdk</code> I've added<br>
     <br>
     
-    <code>export N64_LIBGCCDIR="/usr/local/lib/gcc/mips64-elf/10.2.0"</code><br>
+    <code>export N64_LIBGCCDIR="/opt/crashsdk/lib/gcc/mips64-elf/10.2.0"</code><br>
     <br>
 
+    to the end of my <code>~/.bashrc</code> script.
+    <br>
+</p>
+<p>
+    Finally, add a definition of <code>PATH</code> to your .bashrc.
+    As the compiler installs to <code>/opt/crashsdk</code> I've added<br>
+    <br>
+    
+    <code>PATH=$PATH:/opt/crashsdk/bin; export PATH</code><br>
+    <br>
     to the end of my <code>~/.bashrc</code> script.
 </p>
 
