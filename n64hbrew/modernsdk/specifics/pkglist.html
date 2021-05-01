@@ -33,10 +33,25 @@
 
     <tbody>
         <tr>
+            <td rowspan="1">binutils-mips-n64</td>
+            <td>binutils compiled for N64. Required to do anything.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">gcc-mips-n64</td>
+            <td>gcc and g++ compiled for N64. Required to do anything.
+            </a></td>
+        </tr>
+        <tr>
             <td rowspan="1">iquesdk</td>
             <td>Development libraries targeted for the iQue.
             <br>
             Incompatible with regular N64's due to a lot of hardware differences, do not use if you are using an N64 for your software.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">libgcc-mips-n64</td>
+            <td>libgcc compiled for N64. Required to use GCC.
             </a></td>
         </tr>
         <tr>
@@ -95,6 +110,82 @@
         <tr>
             <td rowspan="1">mus-demos</td>
             <td>Demos for libmus sound library.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">n64-conv-tools</td>
+            <td>Various image tools like rgb2c and flt2c.
+            <br>
+            <span class="note">note</span>:32bit only. will NOT work on WSL1.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">n64-demos</td>
+            <td>Main set of sample code for N64.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">n64graphics</td>
+            <td>Image converter. Supports PNG as input and all N64 image formats as output. 
+            <br>
+                (except YUV but you're not gonna use that anyway) :)
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">n64manual</td>
+            <td>HTML manuals for the SDK. Can be found at /usr/share/doc/n64sdk
+            <span class="note">note</span>:Not updated at all for my SDK, some things can and will be outdated. (Mainly tool-related)
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">n64sdk</td>
+            <td>Development libraries targeted for the N64.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">n64sdk-common</td>
+            <td>Files used in both SDK packages.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">nusys-demos</td>
+            <td>Sample code for NuSystem.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">root-compatibility-environment</td>
+            <td>Some Nintendo SDK programs hard-code usage of the ROOT variable.
+            <br>This package adds compatibility for these programs through a fake symlinked environment.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">rsp-tools</td>
+            <td>RSP assembler tools for assembling microcode.
+            <br>
+            <span class="note">note</span>:32bit only. will NOT work on WSL1.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">spicy</td>
+            <td>Replacement for makerom/mild, the N64 SDK LD wrapper.
+            <br>
+            <span class="note">note</span>:Deprecated. Extremely suggested to use linkerscript.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">tutorial-demos</td>
+            <td>N64 SDK tutorial demos, used in the "N64 TUTORIAL" manual
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">u64assets</td>
+            <td>N64 SDK sound assets.
+            <br>Required for some demos.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">vadpcm-tools</td>
+            <td>VADPCM audio conversion tools.
             </a></td>
         </tr>
     </tbody></table>
