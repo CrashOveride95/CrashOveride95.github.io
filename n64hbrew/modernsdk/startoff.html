@@ -19,31 +19,13 @@
 <h3>Setting up the toolchain</h3>
 
 <p>
-    Before you install the SDK you must build a compiler. In our case, we're using <em>n64chain</em>. <br>
+
+    <a href="toolchainbuild.html">Instructions for building the toolchain yourself are here</a>
+
 </p>
 
 <p>
-    Building the compiler requires dependencies, so you must install them: <br>
-    
-    <code>sudo apt install build-essential libmpfr-dev libmpc-dev libgmp-dev flex bison</code> <br>
-    Clone my fork of n64chain: <code>git clone https://github.com/CrashOveride95/n64chain.git</code> .
-    <br>
-    <br>
-    Then run the <code>build-posix64-toolchain.sh</code> script.<br>
-    <br>
-    If you get a permission error on running the script, run <code>chmod</code> on it.<br>
-    
-    <code>chmod +x build-posix64-toolchain.sh</code><br>
-    <br>
-    It is normal to be prompted for your password, as the compiler installs to <code>/opt/crashsdk</code>.
-    <br>
-    This will download and build <em>GCC</em> and the <em>Binutils</em> line of programs. This may take a while.<br>
-    
-    When it finishes, make sure <code>/opt/crashsdk/bin</code> is in your <strong>PATH</strong>. It should already be there by default.<br>
-</p>
-
-<p>
-    Next, add a definition of <code>N64_LIBGCCDIR</code> to your .bashrc. This is because <code>ld</code> does not search for libraries in that directory by default, so it cannot find <code>libgcc</code>. <br>
+    Add a definition of <code>N64_LIBGCCDIR</code> to your .bashrc. This is because <code>ld</code> does not search for libraries in that directory by default, so it cannot find <code>libgcc</code>. <br>
     
     As the compiler installs to <code>/opt/crashsdk</code> I've added<br>
     <br>
@@ -82,6 +64,13 @@
 <h3>Installing the SDK packages</h3>
 
 <p>
+    First you need to install the toolchain.<br>
+    <br>
+    Run<br>
+    <code>sudo apt install binutils-mips-n64 gcc-mips-n64 libgcc-mips-n64</code><br>
+    To install.<br>
+    <br>
+
     You have two options for the main N64 libraries: <em>iquesdk</em>, and <em>n64sdk</em>. <br>
     <strong>n64sdk</strong> contains version 2.0L of the N64 SDK library, which is the latest version. <br>
     <strong>iquesdk</strong> contains the version used in the <em>iQue SDK</em>, which is a modified version of 2.0L that removes code for N64 acessories irrelevant to the iQue and edits code for some functions to get correct results with its slightly faster CPU and RAM. <br>

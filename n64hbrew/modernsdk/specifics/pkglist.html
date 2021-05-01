@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style type="text/css">
+    body {font: 1.1em sans-serif;}
+    table {border: 1px solid gray; border-collapse: collapse;table-layout:fixed;width:800px;margin-bottom:1em;}
+    caption {background-color: grey; color: white;font: italic bold 1.5em sans-serif;padding:10px;}
+    td {border: 1px solid gray; font: 1em monospace;padding:10px;}
+    th {font: 1em monospace;}
+    th:nth-child(1),th:nth-child(2) {width:150px;}
+    .note {font-weight: bold; color: red; text-decoration: underline;}
+    .contrib {font-weight: bold; color: green; text-decoration: underline;}
+    body,h1,h2,h3 {font-family: Helvetica;}
+    .header {border-bottom: 0.25em solid #ff7300;text-decoration:none;display:inline;}
+    .header h1 {font-family: 'Tahoma';font-size: 43px;font-weight: normal;color:#00aeff;display:inline;text-shadow: 2px 2px 0 white, -2px 2px 0 white;}
+    </style>
+<title>Modern SDK: Package List</title>
+
+<div class='header'><h1>Modern SDK: Package List</h1></div>
+
+<br>
+<br>
+<br>
+<table>
+    <caption>Package List</caption>
+    <thead>
+    <tr>
+        <th scope="col">Package Name</th>
+        <th scope="col">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td rowspan="1">iquesdk</td>
+            <td>Development libraries targeted for the iQue.
+            <br>
+            Incompatible with regular N64's due to a lot of hardware differences, do not use if you are using an N64 for your software.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">libhvq</td>
+            <td>Image decompression library by Hudson and Nintendo.
+            <br>
+            <span class="note">note</span>:Requires hvq2enc tool (for Windows) to encode images.
+            <br>
+            Sample can be found in n64-demos package, docs in /usr/share/doc/libhvq/. 
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">libhvqm</td>
+            <td>FMV decompression library by Hudson and Nintendo.
+            <br>
+            <span class="note">note</span>:Requires hvqm2enc tool (for Windows) to encode videos.
+            <br>
+            Sample can be found in n64-demos package, docs in /usr/share/doc/libhvqm/. 
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">libmus</td>
+            <td>Sometimes called "N64 SoundTools". Music/Sound library.
+            <br>
+            <span class="note">note</span>:Requires the SoundTools (for Windows) to encode sound data.
+            <br>
+            Samples can be found in mus-demos package. 
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">libnaudio</td>
+            <td>Nintendo's main sound library. Sometimes called "SGI Audio"
+            <br>
+            <span class="note">note</span>:Requires the (as of now Windows-only) SGI sound tools to encode sound data.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">libnaudio</td>
+            <td>Nintendo's implementation of the standard C libraries.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">libnusys</td>
+            <td>NuSystem, a library designed to help newcomers understand the N64's architecture.
+            <br>
+            Docs in /usr/share/doc/nusys. Library source in /usr/src/PR/libsrc/nusys-2.07.
+            <br>
+            Samples in nusys-demos package.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">makemask</td>
+            <td>Tool that applies CIC data and fixes the CRC checksum in ROM header. Required for any homebrew.
+            </a></td>
+        </tr>
+        <tr>
+            <td rowspan="1">mus-demos</td>
+            <td>Demos for libmus sound library.
+            </a></td>
+        </tr>
+    </tbody></table>
