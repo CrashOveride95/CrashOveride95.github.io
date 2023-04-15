@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles.css" type="text/css" media="all" />
+<title>Modern SDK: Getting Started</title>
+
+<div class='header'><h1>Modern SDK: Getting Started</h1></div>
+</head>
+<body>
+<h3>Installation Tutorial</h3>
+
+<p>
+    This is the tutorial for installing the SDK. <br>
+    The SDK has only been tested on my Ubuntu 20.04 setup. However, I am reasonably certain it will work on other Debian-based distros, such as Linux Mint. <br>
+    Additionally, it should work just fine on WSL1 or WSL2, however note that x86 tools will not work on WSL1. <br>
+</p>
+
+<h3>Setting up the toolchain</h3>
+
+<p>
+    Add a definition of <code>N64_LIBGCCDIR</code> to your .bashrc. This is because <code>ld</code> does not search for libraries in that directory by default, so it cannot find <code>libgcc</code>. <br>
+    
+    As the compiler installs to <code>/opt/crashsdk</code> I've added<br>
+    <br>
+    
+    <code>export N64_LIBGCCDIR="/opt/crashsdk/lib/gcc/mips64-elf/11.2.0"</code><br>
+    <br>
+
+    to the end of my <code>~/.bashrc</code> script.
+    <br>
+</p>
+<p>
+    Finally, add a definition of <code>PATH</code> to your .bashrc.
+    As the compiler installs to <code>/opt/crashsdk</code> I've added<br>
+    <br>
+    
+    <code>PATH=$PATH:/opt/crashsdk/bin; export PATH</code><br>
+    <br>
+    to the end of my <code>~/.bashrc</code> script.
+</p>
+
+<h3>Adding the SDK to APT</h3>
+
+<p>
+    The SDK is packaged as an <em>APT repo</em>. APT is the software management tool used in Debian and Ubuntu. <br>
+    You must add our APT repo to the list of repos APT can download from. <br>
+
+    To add it, run  <br>
+    <code>echo "deb [trusted=yes] https://crashoveride95.github.io/apt/ ./" | sudo tee /etc/apt/sources.list.d/n64sdk.list</code>  <br>
+    in a Terminal. <br>
+    <br>
+    Then, run <code>sudo apt update</code> to update the package lists. <br>
+    <br>
+    <em>You can now download the SDK packages</em>!
+</p>
+
+<h3>Installing the SDK packages</h3>
+
+<p>
+    First you need to install the toolchain.<br>
+    <br>
+    Run<br>
+    <code>sudo apt install binutils-mips-n64 gcc-mips-n64 newlib-mips-n64</code><br>
+    To install.<br>
+    <br>
+
+    You have two options for the main N64 libraries: <em>iquesdk</em>, and <em>n64sdk</em>. <br>
+    <strong>n64sdk</strong> contains version 2.0L of the N64 SDK library, which is the latest version. <br>
+    <strong>iquesdk</strong> contains the version used in the <em>iQue SDK</em>, which is a modified version of 2.0L that removes code for N64 acessories irrelevant to the iQue and edits code for some functions to get correct results with its slightly faster CPU and RAM. <br>
+    <br>
+    I highly suggest getting the n64sdk package, only get iquesdk if you are specifically targeting the iQue, otherwise things such as rumble and controller pak support will <strong>NOT WORK!</strong><br>
+    <br>
+    To begin setup, install the sdk by installing the package with APT. <br>
+    <br>
+    <code>sudo apt install (sdk of your choice here)</code><br>
+    <br>
+
+    Then, you need makemask, which fixes the CRC checksum on your ROM.
+    <br>
+    <code>sudo apt install makemask</code><br>
+    <br>
+
+    Next, you need to setup the root compatibilty environment. This is needed because in the old nintendo SDKs, there was a "ROOT" folder which simulated a unix filesystem. <br>
+    This creates that setup for compatibility's sake. <br>
+
+    <code>sudo apt install root-compatibility-environment</code><br>
+    <br>
+    Some distros prevent you from installing i386 packages by default, to fix this do<br>
+    <br>
+    <code>sudo dpkg --add-architecture i386</code><br>
+    <br>
+    Then do<br>
+    <br>
+    <code>sudo apt install root-compatibility-environment</code><br>
+    <br>
+    After you install the environment, add a definition of ROOT to your .bashrc:<br>
+    <br>
+    <code>export ROOT=/etc/n64</code><br>
+    <br>
+    If you want to install the demos, use APT install once again:<br>
+    <br>
+    <code>sudo apt install n64-demos</code><br>
+    <br>
+    You are ready to compile the demos!
+</p>
+
+<h3>Compiling the demos</h3>
+
+<p>
+    First, copy the <code>PR</code> directory from <code>/usr/src</code> to your home directory. <br>
+    <br>
+    <code>cp -r /usr/src/PR ~/n64demos</code><br>
+    <br>
+    Then change directory to that folder:<br>
+    <br>
+    <code>cd ~/n64demos</code>
+    <br>
+
+    Change directory to the demo of your choice, and run <code>make</code> to compile it. <br>
+    <br>
+    (Note that hvqmsample requires libhvqm, a FMV library which the sample demonstrates.)<br>
+    <br>
+    After you make the demo, you can run the resulting <code>.z64</code> in the emulator/flashcart of your choice, and it should work perfectly!
+</p>
+
+<h3>NuSystem demos</h3>
+<p>
+    The NuSystem demos can also be installed via APT:<br>
+    <br>
+    <code>sudo apt install nusys-demos</code><br>
+    <br>
+    They can then be found at <code>/usr/src/PR/nusys</code>. Like the regular demos, it's best to copy them to another directory before compiling.
+</p>
+
+<a href="index.html">Back home</a>
+</body>
+</html>
