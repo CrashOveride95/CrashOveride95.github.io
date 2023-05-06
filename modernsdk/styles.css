@@ -28,7 +28,7 @@ h1 {font-family: Helvetica, Sans-serif;}
 code {background-color: #eee;}
 pre {background-color: #eee; overflow-x: auto;}
 section {clear:both;overflow: auto;}
-h3,h4 {background:#eee;}
+h2,h3,h4 {background:#eee;}
 video,img {float:right;max-width:100%;}
 .download {color:white;background-color:green;}
 dd {padding-bottom:1em;}

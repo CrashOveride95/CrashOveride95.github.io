@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../../styles.css" type="text/css" media="all" />
+<title>Modern SDK: Linkerscript commands</title>
+
+<div class='header'><h1>Modern SDK: Linkerscripts</h1></div>
+</head>
+<body>
+    <h2>Commands</h2>
+
+    <h3>Code example</h3>
+    
+    <p>A linkerscript first begins with these lines:</p>
+    
+    <pre><code>OUTPUT_ARCH (mips)
+    
+    SECTIONS
+    {
+       __romPos = 0;
+    </code></pre>
+    
+    <p><code>OUTPUT_ARCH (mips)</code> simply tells <code>ld</code> that the output is in the MIPS architecture.</p>
+    
+    <p><code>SECTIONS</code> tells <code>ld</code> that we will be defining the segments and their order.</p>
+    
+    <p><code>__romPos</code> is an internal variable used by the default macros to define the current location in the ROM.</p>
+    
+    <pre><code>    BEGIN_SEG(boot, 0x04000000)
+    {
+      BUILD_DIR/asm/rom_header.o(.text); /* ROM Header */
+      BUILD_DIR/boot.6102.o(.data); /* CIC 6102 bootcode */
+    }
+    END_SEG(boot)
+    </code></pre>
+    
+    <p>This is the first segment which every script has. This defines the ROM header, and the CIC bootcode. Specifics of these contents are out of scope for this doc.</p>
+    
+    <p>Now we get to our initial codesegment:</p>
+    
+    <pre><code>    BEGIN_SEG(code, 0x80000400)
+    {
+        BUILD_DIR/asm/entry.o(.start);
+        BUILD_DIR/src/main*.o(.text);
+    
+        */libultra_rom.a:*.o(.text);
+    </code></pre>
+    
+    <p><code>BEGIN_SEG</code> declares our segment and the address. Then we get to the lines that include the code itself.
+    The basic format is <code>PATH/TO/FILE.o(SECTION);</code>. <code>SECTION</code> is the section of the object file, for example <code>.text</code>, <code>.data</code>, <code>.rodata</code>, etc.
+    For including folders of files, the format is <code>PATH/TO/FOLDER*.o(SECTION);</code>. 
+    In all the demos, <code>BUILD_DIR</code> is a variable changed by <code>cpp</code> to be your build directory where built artifacts are stored.</p>
+    
+    <p>The final line in this example tells <code>ld</code> to check the <code>libultra_rom.a</code> library for needed code. When running <code>ld</code> <code>-lultra_rom</code> is one of the arguments, so <code>ld</code> knows where to find the library. To include code from a different library, change <code>libultra_rom</code> to whatever the other library is.</p>
+    
+    <p>In the demos, the order of inclusion is <code>.text</code>, <code>.data</code>, and <code>.rodata</code> in that order. Here's a condensed example:</p>
+    
+    <pre><code>        BUILD_DIR/src/main*.o(.text);
+        */libultra_rom.a:*.o(.text);
+    
+        /* data */
+        BUILD_DIR/src/main*.o(.data*);
+        */libultra_rom.a:*.o(.data*);
+    
+        /* rodata */
+        BUILD_DIR/src/main*.o(.*rodata*);
+        */libultra_rom.a:*.o(.*rodata*);
+    }
+    END_SEG(code)
+    </code></pre>
+    
+    <p>After the segment, include your <code>.bss</code> data in a <code>NOLOAD</code> segment like so:</p>
+    
+    <pre><code>    BEGIN_NOLOAD(code)
+    {
+        BUILD_DIR/src/main*.o(.*bss*);
+        */libultra_rom.a:*.o(.*bss*);
+    }
+    END_NOLOAD(code)
+    </code></pre>
+    
+    <h3>Data/assets/binaries example</h3>
+    
+    <p><code>ld</code> does not support including binary blobs. To include binary data, the binaries must be converted into object files. There are multiple methods of doing this, and I recommend you automate this in your makefile or w/e build system you're using.</p>
+    
+    <p>I know of two methods, which are:</p>
+    
+    <p><code>objcopy</code>:</p>
+    
+    <p><code>mips-n64-objcopy -I binary -B mips -O elf32-bigmips INPUTFILE OUTPUTFILE.o</code></p>
+    
+    <p><code>ld</code>:</p>
+    
+    <p><code>mips-n64-ld -r -b binary INPUTFILE -o OUTPUTFILE.o</code></p>
+    
+    <p>Then you can include your binary into the script like so:</p>
+    
+    <pre><code>    BEGIN_SEG(rawdata, __romPos)
+    {
+        BUILD_DIR/assets/BINARY.o(.data*);
+    }
+    END_SEG(rawdata)
+    </code></pre>
+    
+    <p>In this case, <code>__romPos</code> is used as the address argument as the binary is supposed to be in ROM only and not given a memory address in RAM.</p>
+    
+</head>
+<a href="../lkscript.html">Back to Linkerscripts section</a>
+</body>
+</html>

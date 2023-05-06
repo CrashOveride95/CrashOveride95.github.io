@@ -8,17 +8,23 @@
 <div class='header'><h1>Modern SDK: Linkerscripts</h1></div>
 </head>
 <body>
-<h3>Preface</h3>
+    <h3>Preface</h3>
 
-<p>
-    "Linking" involves putting the different data (code, assets) that goes into your program together into a ROM. <br>
-    In the Modern SDK linking is done by passing a linkerscript to <code>ld</code>, and the output ELF file being converted to a ROM binary by <code>objcopy</code>.<br>
-</p>
-<h3>Introduction</h3>
-<p>
-   Now, I don't really want to reiterate the entire GNU LD manual, so I will only be covering the macros provided in the demo scripts, and how they work.
-   
-</p>
+    <p>"Linking" involves putting the different data (code, assets) that goes into your program together into a ROM.
+    In the Modern SDK linking is done by passing a linkerscript to <code>ld</code>, and the output ELF file being converted to a ROM binary by <code>objcopy</code>.</p>
+    
+    <p>To help simplify the process, by default the script is passed through the C preprocessor <code>cpp</code>, allowing for macros and comments to be used easily.</p>
+    
+    <p>I won't be reinterating the entire <code>ld</code> manual here, but I'll show the stuff needed for N64 projects.</p>
+    
+    <h3><a href="lkscript_specific/defmacros.html">Default macros</a></h3>
+    
+    <p>These macros are included in all of the demos' scripts, and I highly suggest you use them as well as they simplify the script greatly. This page covers these macros and how to use them.</p>
+    
+    <h3><a href="lkscript_specific/commands.html">Commands</a></h3>
+    
+    <p>An explanation of how to link in code/data and the other commands.</p>
+    
 
 <a href="index.html">Back home</a>
 </body>

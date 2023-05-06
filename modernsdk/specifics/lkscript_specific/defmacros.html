@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../../styles.css" type="text/css" media="all" />
+<title>Modern SDK: Default Linkerscript macros</title>
+
+<div class='header'><h1>Modern SDK: Linkerscripts</h1></div>
+</head>
+<body>
+
+<h2>Default macros</h2>
+
+<p>These macros are included in all of the demos' scripts, and I highly suggest you use them as well as they simplify the script greatly.</p>
+
+<h3><code>BEGIN_SEG(name, addr)</code></h3>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: The name of your segment. Example: <code>code</code> </li>
+<li><code>addr</code>: The address of your segment in memory. Example:<code>0x80000400</code></li>
+</ul>
+
+<p><strong>Function</strong></p>
+
+<p>Declares the beginning of a new segment. It also declares symbols for the beginning of your segment in RAM and ROM.</p>
+
+<p>These symbols are named <code>_nameSegmentStart</code> and <code>_nameSegmentRomStart</code> respectively, where <code>name</code> is the <code>name</code> argument. </p>
+
+<p>Make sure to keep this in mind when thinking of a segment name, i.e don't name your segment <code>codesegment</code> because then your symbol will be named <code>_codesegmentSegmentStart</code>.</p>
+
+<p><strong>Simularities to <code>spec</code> format</strong></p>
+
+<p>This is the equivalent of the <code>beginseg</code> command, and the <code>name</code> and <code>address</code> subcommands.</p>
+
+<h3><code>END_SEG(name)</code></h3>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: The name of your segment. Example: <code>code</code> </li>
+</ul>
+
+<p><strong>Function</strong></p>
+
+<p>Declares the end of a segment. It also declares symbols for the end of your segment in RAM and ROM.</p>
+
+<p>These symbols are named <code>_nameSegmentEnd</code> and <code>_nameSegmentRomEnd</code> respectively, where <code>name</code> is the <code>name</code> argument. </p>
+
+<p><strong>Simularities to <code>spec</code> format</strong></p>
+
+<p>This is the equivalent of the <code>endseg</code> command.</p>
+
+<h3>Example of <code>BEGIN_SEG</code> and <code>END_SEG</code>:</h3>
+
+<pre><code>    BEGIN_SEG(code, 0x80000400)
+{
+   BUILD_DIR/asm/entry.o(.start);
+   BUILD_DIR/src/main*.o(.text);
+
+   */libultra_rom.a:*.o(.text);
+   */libgcc.a:*.o(.text);
+
+   /usr/lib/n64/PR/rspboot.o(.text);
+   /usr/lib/n64/PR/gspF3DEX2.NoN.fifo.o(.text);
+
+   /* data */
+   BUILD_DIR/src/main*.o(.data*);
+
+   */libultra_rom.a:*.o(.data*);
+   /usr/lib/n64/PR/rspboot.o(.data*);
+   /usr/lib/n64/PR/gspF3DEX2.NoN.fifo.o(.data*);
+
+   /* rodata */
+   BUILD_DIR/src/main*.o(.*rodata*);
+
+   */libultra_rom.a:*.o(.*rodata*);
+   */libgcc.a:*.o(.*rodata*);
+}
+END_SEG(code)
+</code></pre>
+
+<h3><code>BEGIN_NOLOAD(name)</code></h3>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: The name of your segment. Example: <code>code</code></li>
+</ul>
+
+<p><strong>Function</strong></p>
+
+<p>Declares the beginning of a new <code>NOLOAD</code> segment. A <code>NOLOAD</code> segment is a kind of segment which is not intended to be loaded into RAM on boot. This is intended for storing things that are uninitialized data, like <code>.bss</code> sections of your code, and buffers like your framebuffer or zbuffer.</p>
+
+<p><code>NOLOAD</code> segments do not support address assignment the same way as a regular segment, so to assign your segment to a specific address, use a <code>. = ADDRESSHERE;</code> statement. This tells <code>ld</code> that the current location in RAM is changing to that address, think like how <code>cd</code> changes directory in the command line.</p>
+
+<p><strong>Simularities to <code>spec</code> format</strong></p>
+
+<p><code>spec</code> has no equivalent for this.</p>
+
+<h3><code>END_NOLOAD(name)</code></h3>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: The name of your segment. Example: <code>code</code></li>
+</ul>
+
+<p><strong>Function</strong></p>
+
+<p>Declares the end of a <code>NOLOAD</code> segment.</p>
+
+<p><strong>Simularities to <code>spec</code> format</strong></p>
+
+<p><code>spec</code> has no equivalent for this.</p>
+
+<h3>Example of <code>BEGIN_NOLOAD</code> and <code>END_NOLOAD</code>:</h3>
+
+<pre><code>    . = 0x80100000; /* Tells LD to go to this address */
+
+BEGIN_NOLOAD(cfb)
+{
+    BUILD_DIR/src/buffers/cfb.o(.bss*);
+}
+END_NOLOAD(cfb)
+</code></pre>
+
+</head>
+<a href="../lkscript.html">Back to Linkerscripts section</a>
+</body>
+</html>
